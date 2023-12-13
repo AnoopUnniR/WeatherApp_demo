@@ -2,7 +2,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:weather_app_demo/infrastructure/weather_services.dart';
 
 class WeatherLocationRepository {
-  Future getLocation() async {
+  Future getLocation(String lang) async {
     bool isServiceEnabled;
     LocationPermission locationPermission;
     isServiceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -26,7 +26,7 @@ class WeatherLocationRepository {
         .then((value) {
       //calling weather api
       return FetchForecastWeather()
-          .processData(value.latitude, value.longitude);
+          .processData(value.latitude, value.longitude,lang);
     });
   }
 }

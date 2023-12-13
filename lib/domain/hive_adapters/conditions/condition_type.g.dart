@@ -6,17 +6,17 @@ part of 'condition_type.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ConditionAdapter extends TypeAdapter<Condition> {
+class ConditionDbModelAdapter extends TypeAdapter<ConditionDbModel> {
   @override
   final int typeId = 0;
 
   @override
-  Condition read(BinaryReader reader) {
+  ConditionDbModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Condition(
+    return ConditionDbModel(
       text: fields[0] as String?,
       icon: fields[1] as String?,
       code: fields[2] as int?,
@@ -24,7 +24,7 @@ class ConditionAdapter extends TypeAdapter<Condition> {
   }
 
   @override
-  void write(BinaryWriter writer, Condition obj) {
+  void write(BinaryWriter writer, ConditionDbModel obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)
@@ -41,7 +41,7 @@ class ConditionAdapter extends TypeAdapter<Condition> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ConditionAdapter &&
+      other is ConditionDbModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

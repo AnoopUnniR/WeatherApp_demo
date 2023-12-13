@@ -1,18 +1,18 @@
 
 
 import 'package:hive/hive.dart';
-import 'package:weather_app_demo/domain/models/forecast_model/forecastday.dart';
+import 'package:weather_app_demo/domain/hive_adapters/forecastday/forecastday_type.dart';
 
 
 part 'forecast_type.g.dart';
 
 @HiveType(typeId: 3) 
-class Forecast {
+class ForecastDbModel {
 
   @HiveField(0)
-  List<Forecastday>? forecastday;
+  List<ForecastdayDbModel>? forecastday;
 
-  Forecast({
+  ForecastDbModel({
     required this.forecastday
   });
 }

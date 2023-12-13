@@ -16,29 +16,29 @@ import 'package:hive_flutter/adapters.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  if (!Hive.isAdapterRegistered(ConditionAdapter().typeId)) {
-    Hive.registerAdapter(ConditionAdapter());
+  if (!Hive.isAdapterRegistered(ConditionDbModelAdapter().typeId)) {
+    Hive.registerAdapter(ConditionDbModelAdapter());
   }
-  if (!Hive.isAdapterRegistered(CurrentAdapter().typeId)) {
-    Hive.registerAdapter(CurrentAdapter());
+  if (!Hive.isAdapterRegistered(CurrentDbModelAdapter().typeId)) {
+    Hive.registerAdapter(CurrentDbModelAdapter());
   }
-  if (!Hive.isAdapterRegistered(DayAdapter().typeId)) {
-    Hive.registerAdapter(DayAdapter());
+  if (!Hive.isAdapterRegistered(DayDbModelAdapter().typeId)) {
+    Hive.registerAdapter(DayDbModelAdapter());
   }
-  if (!Hive.isAdapterRegistered(ForecastAdapter().typeId)) {
-    Hive.registerAdapter(ForecastAdapter());
+  if (!Hive.isAdapterRegistered(ForecastDbModelAdapter().typeId)) {
+    Hive.registerAdapter(ForecastDbModelAdapter());
   }
-  if (!Hive.isAdapterRegistered(ForecastModelAdapter().typeId)) {
-    Hive.registerAdapter(ForecastModelAdapter());
+  if (!Hive.isAdapterRegistered(ForecastModelDbModelAdapter().typeId)) {
+    Hive.registerAdapter(ForecastModelDbModelAdapter());
   }
-  if (!Hive.isAdapterRegistered(ForecastdayAdapter().typeId)) {
-    Hive.registerAdapter(ForecastdayAdapter());
+  if (!Hive.isAdapterRegistered(ForecastdayDbModelAdapter().typeId)) {
+    Hive.registerAdapter(ForecastdayDbModelAdapter());
   }
-  if (!Hive.isAdapterRegistered(HourAdapter().typeId)) {
-    Hive.registerAdapter(HourAdapter());
+  if (!Hive.isAdapterRegistered(HourDbModelAdapter().typeId)) {
+    Hive.registerAdapter(HourDbModelAdapter());
   }
-  if (!Hive.isAdapterRegistered(LocationAdapter().typeId)) {
-    Hive.registerAdapter(LocationAdapter());
+  if (!Hive.isAdapterRegistered(LocationDbModelAdapter().typeId)) {
+    Hive.registerAdapter(LocationDbModelAdapter());
   }
   runApp(const MainApp());
 }
@@ -61,7 +61,9 @@ class MainApp extends StatelessWidget {
           ),
         ],
         child: const MaterialApp(
+          debugShowCheckedModeBanner: false,
           home: Scaffold(body: SplashScreen()),
-        ));
+        ),
+      );
   }
 }

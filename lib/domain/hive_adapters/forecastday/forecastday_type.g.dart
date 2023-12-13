@@ -6,32 +6,29 @@ part of 'forecastday_type.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ForecastdayAdapter extends TypeAdapter<Forecastday> {
+class ForecastdayDbModelAdapter extends TypeAdapter<ForecastdayDbModel> {
   @override
   final int typeId = 5;
 
   @override
-  Forecastday read(BinaryReader reader) {
+  ForecastdayDbModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Forecastday(
+    return ForecastdayDbModel(
       date: fields[0] as String?,
-      dateEpoch: fields[1] as int?,
-      day: fields[2] as Day?,
-      hour: (fields[3] as List?)?.cast<Hour>(),
+      day: fields[2] as DayDbModel?,
+      hour: (fields[3] as List?)?.cast<HourDbModel>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, Forecastday obj) {
+  void write(BinaryWriter writer, ForecastdayDbModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.date)
-      ..writeByte(1)
-      ..write(obj.dateEpoch)
       ..writeByte(2)
       ..write(obj.day)
       ..writeByte(3)
@@ -44,7 +41,7 @@ class ForecastdayAdapter extends TypeAdapter<Forecastday> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ForecastdayAdapter &&
+      other is ForecastdayDbModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

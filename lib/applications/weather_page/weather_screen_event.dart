@@ -5,6 +5,7 @@ class WeatherScreenEvent with _$WeatherScreenEvent {
   const factory WeatherScreenEvent.started() = _Started;
   const factory WeatherScreenEvent.fromCityName({
     required String cityName,
-    required bool isLocation
+    required bool isLocation,
+    required String language
   }) = FromCityName;
 }

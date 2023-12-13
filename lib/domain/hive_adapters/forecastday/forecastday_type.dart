@@ -1,28 +1,24 @@
 import 'package:hive/hive.dart';
-import 'package:weather_app_demo/domain/models/forecast_model/hour.dart';
-import 'package:weather_app_demo/domain/models/forecast_model/day.dart';
+import 'package:weather_app_demo/domain/hive_adapters/hour/hour_type.dart';
+import 'package:weather_app_demo/domain/hive_adapters/day/day_type.dart';
 
 
 part 'forecastday_type.g.dart';
 
-@HiveType(typeId: 5) // Choose a unique typeId
-class Forecastday {
+@HiveType(typeId: 5) 
+class ForecastdayDbModel {
   @HiveField(0)
   String? date;
 
-  @HiveField(1)
-  int? dateEpoch;
-
   @HiveField(2)
-  Day? day;
+  DayDbModel? day;
 
   @HiveField(3)
-  List<Hour>? hour;
+  List<HourDbModel>? hour;
 
-  Forecastday({
+  ForecastdayDbModel({
     this.date,
-    this.dateEpoch,
-    this.day,
+   this.day,
     this.hour,
   });
 }

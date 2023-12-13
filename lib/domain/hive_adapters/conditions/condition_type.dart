@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'condition_type.g.dart';
 
 @HiveType(typeId: 0) 
-class Condition {
+class ConditionDbModel {
   @HiveField(0)
   String? text;
 
@@ -13,5 +13,5 @@ class Condition {
   @HiveField(2)
   int? code;
 
-  Condition({this.text, this.icon, this.code});
+  ConditionDbModel({this.text, this.icon, this.code});
 }

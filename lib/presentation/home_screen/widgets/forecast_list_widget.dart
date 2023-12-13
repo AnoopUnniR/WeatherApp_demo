@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_demo/domain/models/forecast_model/forecastday.dart';
+import 'package:weather_app_demo/domain/hive_adapters/forecastday/forecastday_type.dart';
 
 class ForecastListWidget extends StatelessWidget {
   const ForecastListWidget({super.key, required this.forecastday});
-  final List<Forecastday> forecastday;
+  final List<ForecastdayDbModel> forecastday;
   @override
   Widget build(BuildContext context) {
-   
-
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: forecastday.length,
       itemBuilder: (context, index) {
-        Forecastday forecast = forecastday[index];
+        ForecastdayDbModel forecast = forecastday[index];
         return ListTile(
           leading: Container(
             height: 50,

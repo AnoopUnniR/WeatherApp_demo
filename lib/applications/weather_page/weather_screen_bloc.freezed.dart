@@ -19,19 +19,22 @@ mixin _$WeatherScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String cityName, bool isLocation) fromCityName,
+    required TResult Function(String cityName, bool isLocation, String language)
+        fromCityName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String cityName, bool isLocation)? fromCityName,
+    TResult? Function(String cityName, bool isLocation, String language)?
+        fromCityName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String cityName, bool isLocation)? fromCityName,
+    TResult Function(String cityName, bool isLocation, String language)?
+        fromCityName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +116,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String cityName, bool isLocation) fromCityName,
+    required TResult Function(String cityName, bool isLocation, String language)
+        fromCityName,
   }) {
     return started();
   }
@@ -122,7 +126,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String cityName, bool isLocation)? fromCityName,
+    TResult? Function(String cityName, bool isLocation, String language)?
+        fromCityName,
   }) {
     return started?.call();
   }
@@ -131,7 +136,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String cityName, bool isLocation)? fromCityName,
+    TResult Function(String cityName, bool isLocation, String language)?
+        fromCityName,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -182,7 +188,7 @@ abstract class _$$FromCityNameImplCopyWith<$Res> {
           _$FromCityNameImpl value, $Res Function(_$FromCityNameImpl) then) =
       __$$FromCityNameImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String cityName, bool isLocation});
+  $Res call({String cityName, bool isLocation, String language});
 }
 
 /// @nodoc
@@ -198,6 +204,7 @@ class __$$FromCityNameImplCopyWithImpl<$Res>
   $Res call({
     Object? cityName = null,
     Object? isLocation = null,
+    Object? language = null,
   }) {
     return _then(_$FromCityNameImpl(
       cityName: null == cityName
@@ -208,6 +215,10 @@ class __$$FromCityNameImplCopyWithImpl<$Res>
           ? _value.isLocation
           : isLocation // ignore: cast_nullable_to_non_nullable
               as bool,
+      language: null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -215,16 +226,21 @@ class __$$FromCityNameImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FromCityNameImpl implements FromCityName {
-  const _$FromCityNameImpl({required this.cityName, required this.isLocation});
+  const _$FromCityNameImpl(
+      {required this.cityName,
+      required this.isLocation,
+      required this.language});
 
   @override
   final String cityName;
   @override
   final bool isLocation;
+  @override
+  final String language;
 
   @override
   String toString() {
-    return 'WeatherScreenEvent.fromCityName(cityName: $cityName, isLocation: $isLocation)';
+    return 'WeatherScreenEvent.fromCityName(cityName: $cityName, isLocation: $isLocation, language: $language)';
   }
 
   @override
@@ -235,11 +251,13 @@ class _$FromCityNameImpl implements FromCityName {
             (identical(other.cityName, cityName) ||
                 other.cityName == cityName) &&
             (identical(other.isLocation, isLocation) ||
-                other.isLocation == isLocation));
+                other.isLocation == isLocation) &&
+            (identical(other.language, language) ||
+                other.language == language));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, cityName, isLocation);
+  int get hashCode => Object.hash(runtimeType, cityName, isLocation, language);
 
   @JsonKey(ignore: true)
   @override
@@ -251,29 +269,32 @@ class _$FromCityNameImpl implements FromCityName {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String cityName, bool isLocation) fromCityName,
+    required TResult Function(String cityName, bool isLocation, String language)
+        fromCityName,
   }) {
-    return fromCityName(cityName, isLocation);
+    return fromCityName(cityName, isLocation, language);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String cityName, bool isLocation)? fromCityName,
+    TResult? Function(String cityName, bool isLocation, String language)?
+        fromCityName,
   }) {
-    return fromCityName?.call(cityName, isLocation);
+    return fromCityName?.call(cityName, isLocation, language);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String cityName, bool isLocation)? fromCityName,
+    TResult Function(String cityName, bool isLocation, String language)?
+        fromCityName,
     required TResult orElse(),
   }) {
     if (fromCityName != null) {
-      return fromCityName(cityName, isLocation);
+      return fromCityName(cityName, isLocation, language);
     }
     return orElse();
   }
@@ -313,10 +334,12 @@ class _$FromCityNameImpl implements FromCityName {
 abstract class FromCityName implements WeatherScreenEvent {
   const factory FromCityName(
       {required final String cityName,
-      required final bool isLocation}) = _$FromCityNameImpl;
+      required final bool isLocation,
+      required final String language}) = _$FromCityNameImpl;
 
   String get cityName;
   bool get isLocation;
+  String get language;
   @JsonKey(ignore: true)
   _$$FromCityNameImplCopyWith<_$FromCityNameImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -324,28 +347,28 @@ abstract class FromCityName implements WeatherScreenEvent {
 
 /// @nodoc
 mixin _$WeatherScreenState {
-  ForecastModel? get forecastData => throw _privateConstructorUsedError;
+  ForecastModelDbModel? get forecastData => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
   String get errorText => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ForecastModel? forecastData, bool isLoading,
-            bool isError, String errorText)
+    required TResult Function(ForecastModelDbModel? forecastData,
+            bool isLoading, bool isError, String errorText)
         startedLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ForecastModel? forecastData, bool isLoading, bool isError,
-            String errorText)?
+    TResult? Function(ForecastModelDbModel? forecastData, bool isLoading,
+            bool isError, String errorText)?
         startedLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ForecastModel? forecastData, bool isLoading, bool isError,
-            String errorText)?
+    TResult Function(ForecastModelDbModel? forecastData, bool isLoading,
+            bool isError, String errorText)?
         startedLoading,
     required TResult orElse(),
   }) =>
@@ -379,7 +402,7 @@ abstract class $WeatherScreenStateCopyWith<$Res> {
       _$WeatherScreenStateCopyWithImpl<$Res, WeatherScreenState>;
   @useResult
   $Res call(
-      {ForecastModel? forecastData,
+      {ForecastModelDbModel? forecastData,
       bool isLoading,
       bool isError,
       String errorText});
@@ -407,7 +430,7 @@ class _$WeatherScreenStateCopyWithImpl<$Res, $Val extends WeatherScreenState>
       forecastData: freezed == forecastData
           ? _value.forecastData
           : forecastData // ignore: cast_nullable_to_non_nullable
-              as ForecastModel?,
+              as ForecastModelDbModel?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -433,7 +456,7 @@ abstract class _$$StartedLoadingImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ForecastModel? forecastData,
+      {ForecastModelDbModel? forecastData,
       bool isLoading,
       bool isError,
       String errorText});
@@ -459,7 +482,7 @@ class __$$StartedLoadingImplCopyWithImpl<$Res>
       forecastData: freezed == forecastData
           ? _value.forecastData
           : forecastData // ignore: cast_nullable_to_non_nullable
-              as ForecastModel?,
+              as ForecastModelDbModel?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -486,7 +509,7 @@ class _$StartedLoadingImpl implements StartedLoading {
       required this.errorText});
 
   @override
-  final ForecastModel? forecastData;
+  final ForecastModelDbModel? forecastData;
   @override
   final bool isLoading;
   @override
@@ -527,8 +550,8 @@ class _$StartedLoadingImpl implements StartedLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ForecastModel? forecastData, bool isLoading,
-            bool isError, String errorText)
+    required TResult Function(ForecastModelDbModel? forecastData,
+            bool isLoading, bool isError, String errorText)
         startedLoading,
   }) {
     return startedLoading(forecastData, isLoading, isError, errorText);
@@ -537,8 +560,8 @@ class _$StartedLoadingImpl implements StartedLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ForecastModel? forecastData, bool isLoading, bool isError,
-            String errorText)?
+    TResult? Function(ForecastModelDbModel? forecastData, bool isLoading,
+            bool isError, String errorText)?
         startedLoading,
   }) {
     return startedLoading?.call(forecastData, isLoading, isError, errorText);
@@ -547,8 +570,8 @@ class _$StartedLoadingImpl implements StartedLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ForecastModel? forecastData, bool isLoading, bool isError,
-            String errorText)?
+    TResult Function(ForecastModelDbModel? forecastData, bool isLoading,
+            bool isError, String errorText)?
         startedLoading,
     required TResult orElse(),
   }) {
@@ -589,13 +612,13 @@ class _$StartedLoadingImpl implements StartedLoading {
 
 abstract class StartedLoading implements WeatherScreenState {
   const factory StartedLoading(
-      {required final ForecastModel? forecastData,
+      {required final ForecastModelDbModel? forecastData,
       required final bool isLoading,
       required final bool isError,
       required final String errorText}) = _$StartedLoadingImpl;
 
   @override
-  ForecastModel? get forecastData;
+  ForecastModelDbModel? get forecastData;
   @override
   bool get isLoading;
   @override

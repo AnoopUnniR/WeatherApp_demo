@@ -1,16 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:weather_app_demo/core/constands/constands.dart';
 import 'package:weather_app_demo/core/constands/custom_colors.dart';
-import 'package:weather_app_demo/domain/models/forecast_model/forecast_model.dart';
+import 'package:weather_app_demo/domain/hive_adapters/forecast_model/forecast_model_type.dart';
 import 'package:weather_app_demo/presentation/home_screen/widgets/forecast_list_widget.dart';
 import 'package:weather_app_demo/presentation/home_screen/widgets/todays_forecast_widget.dart';
 
 class CurrentWeatherWidget extends StatelessWidget {
-  const CurrentWeatherWidget(
-      {super.key,
-      required this.forecastModel});
-  final ForecastModel forecastModel;
+  const CurrentWeatherWidget({super.key, required this.forecastModel});
+  final ForecastModelDbModel forecastModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,7 +25,7 @@ class CurrentWeatherWidget extends StatelessWidget {
             hourList: forecastModel.forecast!.forecastday![0].hour!),
         sbh10,
         //forecast widget
-        forecastHeader("5 Day Forecast"),
+        forecastHeader("3 Days Forecast"),
         sbh10,
         ForecastListWidget(forecastday: forecastModel.forecast!.forecastday!)
       ],
@@ -43,23 +40,22 @@ class CurrentWeatherWidget extends StatelessWidget {
           style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
         ));
   }
+
   Widget temperatureAreaWidget() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Column(
           children: [
-            Container(  
+            Container(
               height: 80,
               width: 80,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 // color: CustomColors.cardColor,
                 image: DecorationImage(
-                  image:
-                      // NetworkImage("https:${weatherDataCurrent.conditionIcon}"),
-                      NetworkImage(
-                          "https:${forecastModel.current!.condition!.icon}"),
+                  image: NetworkImage(
+                      "https:${forecastModel.current!.condition!.icon}"),
                   fit: BoxFit.contain,
                 ),
               ),

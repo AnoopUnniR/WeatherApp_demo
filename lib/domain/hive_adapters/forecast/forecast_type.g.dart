@@ -6,23 +6,23 @@ part of 'forecast_type.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ForecastAdapter extends TypeAdapter<Forecast> {
+class ForecastDbModelAdapter extends TypeAdapter<ForecastDbModel> {
   @override
   final int typeId = 3;
 
   @override
-  Forecast read(BinaryReader reader) {
+  ForecastDbModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Forecast(
-      forecastday: (fields[0] as List?)?.cast<Forecastday>(),
+    return ForecastDbModel(
+      forecastday: (fields[0] as List?)?.cast<ForecastdayDbModel>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, Forecast obj) {
+  void write(BinaryWriter writer, ForecastDbModel obj) {
     writer
       ..writeByte(1)
       ..writeByte(0)
@@ -35,7 +35,7 @@ class ForecastAdapter extends TypeAdapter<Forecast> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ForecastAdapter &&
+      other is ForecastDbModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
