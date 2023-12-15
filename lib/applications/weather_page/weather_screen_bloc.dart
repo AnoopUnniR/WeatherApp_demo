@@ -33,7 +33,6 @@ class WeatherScreenBloc extends Bloc<WeatherScreenEvent, WeatherScreenState> {
         (String, ForecastModel?) response = await fetchForecastWeather
             .processDataByName(event.cityName, event.language);
         if (response.$1.isEmpty) {
-          print("value of this is : ${response.$2}");
           ForecastModelDbModel result =
               await weatherLocalRepository.storeWeatherData(response.$2!);
           return emit(state.copyWith(isLoading: false, forecastData: result));

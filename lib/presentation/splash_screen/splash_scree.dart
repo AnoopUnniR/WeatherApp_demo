@@ -17,15 +17,14 @@ class SplashScreen extends StatelessWidget {
               builder: (context) => const SearchPage(),
             ),
           );
-          Navigator.of(context).push(
+          Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) => WeatherPage(forecastModel: state.forecastModel),
             ),
           );
         }
         if (state is SplashLoadedState) {
-          
-          Navigator.of(context).push(
+          Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) => const SearchPage(),
             ),

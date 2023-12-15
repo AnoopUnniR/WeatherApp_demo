@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_demo/domain/hive_adapters/forecast_model/forecast_model_type.dart';
-import 'package:weather_app_demo/domain/models/forecast_model/forecast_model.dart';
 import 'package:weather_app_demo/infrastructure/hive_box/forecast_hive_box.dart';
 
 part 'splash_screen_event.dart';

@@ -1,15 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:weather_app_demo/core/api/api_key.dart';
-import 'package:weather_app_demo/core/json_example.dart';
 import 'package:weather_app_demo/domain/models/forecast_model/forecast_model.dart';
 
 String apiUrlForecastByName(String cityName, String lang) {
-  return "http://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$cityName&days=5&lang=$lang";
+  return "https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$cityName&days=5&lang=$lang";
 }
 
 String apiUrlForecast(lat, lon, String lang) {
-  return "http://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$lat,$lon&days=5&lang=$lang";
+  return "https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$lat,$lon&days=5&lang=$lang";
 }
 
 class FetchForecastWeather {

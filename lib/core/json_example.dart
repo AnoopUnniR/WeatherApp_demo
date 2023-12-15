@@ -1,4 +1,4 @@
-Map<String, dynamic> jsonWxample = {
+Map<String, dynamic> jsonExample = {
   "location": {
     "name": "Thiruvananthapuram",
     "region": "Kerala",
